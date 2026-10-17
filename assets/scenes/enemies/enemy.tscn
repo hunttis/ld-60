@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bggs8w5cdy3lq" path="res://assets/scenes/enemies/enemy.gd" id="1_hlggj"]
 [ext_resource type="Texture2D" uid="uid://dnsmfl1382bs7" path="res://icon.svg" id="3_0jl15"]
+[ext_resource type="Script" uid="uid://ihre61ce1x8l" path="res://assets/scenes/enemies/enemy_hurtbox.gd" id="3_jitnm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dis88"]
+size = Vector2(30, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a648p"]
 size = Vector2(30, 28)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1274839022]
@@ -17,3 +21,12 @@ shape = SubResource("RectangleShape2D_dis88")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=524089430]
 scale = Vector2(0.19999939, 0.19999939)
 texture = ExtResource("3_0jl15")
+
+[node name="EnemyHurtbox" type="Area2D" parent="." unique_id=232993816]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
+script = ExtResource("3_jitnm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHurtbox" unique_id=1232385776]
+shape = SubResource("RectangleShape2D_a648p")

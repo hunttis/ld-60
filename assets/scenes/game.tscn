@@ -2,6 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://c4rilst8won7a" path="res://assets/scenes/player/player.tscn" id="1_cb66b"]
 
+[sub_resource type="TileSet" id="TileSet_a648p"]
+
 [node name="Game" type="Node2D" unique_id=686144590]
 
 [node name="RemoveMeLabel" type="Label" parent="." unique_id=2071767456]
@@ -11,3 +13,6 @@ text = "Game happens here"
 
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(15, 360)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=993401657]
+tile_set = SubResource("TileSet_a648p")

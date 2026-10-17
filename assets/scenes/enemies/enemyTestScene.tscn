@@ -1,25 +1,39 @@
 [gd_scene format=3 uid="uid://dwfw6ewal4kyl"]
 
+[ext_resource type="Script" uid="uid://dltqjt6lyce1l" path="res://assets/scenes/enemies/enemy_test_scene.gd" id="1_4vfpt"]
 [ext_resource type="PackedScene" uid="uid://dea1cuynti57b" path="res://assets/scenes/enemies/enemy.tscn" id="1_l0exn"]
+[ext_resource type="PackedScene" uid="uid://caks8edhjdicg" path="res://assets/scenes/test/tilemap.tscn" id="1_qvhpf"]
 [ext_resource type="Script" uid="uid://dpno1fwsd4gyo" path="res://assets/scenes/enemies/path_follow_component.gd" id="2_utx77"]
+[ext_resource type="Script" uid="uid://cpxp33tah80dw" path="res://assets/components/gravity_component.gd" id="4_06bu4"]
 
 [sub_resource type="Curve2D" id="Curve2D_qvhpf"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 61, 36, 0, 0, 0, 0, 258, 22, 0, 0, 0, 0, 252, 67, 0, 0, 0, 0, 383, 60, 0, 0, 0, 0, 311, 194, 0, 0, 0, 0, 130, 202, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 452, 76, 0, 0, 0, 0, -163, 78)
 }
-point_count = 7
+point_count = 2
 
 [node name="EnemyTestScene" type="Node2D" unique_id=204612694]
+script = ExtResource("1_4vfpt")
+
+[node name="Tilemap" parent="." unique_id=397394120 instance=ExtResource("1_qvhpf")]
 
 [node name="Enemy" parent="." unique_id=1274839022 instance=ExtResource("1_l0exn")]
-position = Vector2(133, 61)
+position = Vector2(619, 156)
 speed = 1400.0
+max_health = 10.0
 
 [node name="PathFollowComponent" type="Node" parent="Enemy" unique_id=1828356864 node_paths=PackedStringArray("path")]
 script = ExtResource("2_utx77")
 path = NodePath("../../Path2D")
 metadata/_custom_type_script = "uid://dpno1fwsd4gyo"
 
+[node name="GravityComponent" type="Node" parent="Enemy" unique_id=1935523499]
+script = ExtResource("4_06bu4")
+metadata/_custom_type_script = "uid://cpxp33tah80dw"
+
 [node name="Path2D" type="Path2D" parent="." unique_id=1375050414]
 position = Vector2(181, 104)
 curve = SubResource("Curve2D_qvhpf")
+
+[node name="EnemyTarget" type="Node2D" parent="." unique_id=760296337]
+position = Vector2(36, 26)

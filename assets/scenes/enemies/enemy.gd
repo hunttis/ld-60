@@ -6,10 +6,13 @@ signal before_move(delta: float)
 
 
 @export var speed: float = 400.0
-@export var max_health: float = 1
+@export var max_health: float
 
 var health: float
 var current_speed: float
+
+func _ready():
+  health = max_health
 
 static func create(_speed: float, _max_health: float, _armor: float) -> Enemy:
   var enemy: Enemy = load("res://assets/scenes/enemies/enemy.tscn").instantiate()
@@ -26,6 +29,7 @@ func take_damage(damage: float) -> void:
     die()
 
 func die() -> void:
+  print("should die")
   on_death.emit()
   queue_free()
 
