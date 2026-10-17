@@ -18,7 +18,7 @@ projectile_scene = ExtResource("2_5aext")
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 140.0
-offset_bottom = 62.0
+offset_bottom = 90.0
 
 [node name="AngleLabel" type="Label" parent="CannonParametersPanel" unique_id=1034256158]
 layout_mode = 0
@@ -51,6 +51,20 @@ offset_left = 100.0
 offset_top = 28.0
 offset_right = 130.0
 offset_bottom = 53.0
+
+[node name="PointsLabel" type="Label" parent="CannonParametersPanel" unique_id=387087511]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 53.0
+offset_right = 57.0
+offset_bottom = 76.0
+text = "Points:"
+
+[node name="PointsValue" type="Label" parent="CannonParametersPanel/PointsLabel" unique_id=1234307120]
+layout_mode = 0
+offset_left = 54.0
+offset_right = 121.0
+offset_bottom = 23.0
 
 [node name="EnemyController" parent="." unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
 walker_spawn = NodePath("WalkerSpawn")
