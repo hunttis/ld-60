@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dea1cuynti57b"]
 
 [ext_resource type="Script" uid="uid://bggs8w5cdy3lq" path="res://assets/scenes/enemies/enemy.gd" id="1_hlggj"]
-[ext_resource type="SpriteFrames" uid="uid://bvk1o5nld8c07" path="res://assets/scenes/enemies/sprites/light_flying_enemy_sprite_frames.tres" id="3_0jl15"]
+[ext_resource type="SpriteFrames" uid="uid://82rcfyj3w3aq" path="res://assets/scenes/enemies/sprites/basic_enemy_sprite_frames.tres" id="3_47wg6"]
 [ext_resource type="Script" uid="uid://ihre61ce1x8l" path="res://assets/scenes/enemies/components/enemy_hurtbox.gd" id="3_jitnm"]
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1274839022]
@@ -20,5 +20,4 @@ script = ExtResource("3_jitnm")
 [node name="Hurtbox" type="CollisionShape2D" parent="EnemyHurtbox" unique_id=1232385776]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1637856193]
-sprite_frames = ExtResource("3_0jl15")
-frame_progress = 0.78093696
+sprite_frames = ExtResource("3_47wg6")

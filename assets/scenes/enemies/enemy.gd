@@ -14,6 +14,7 @@ signal before_move(delta: float)
 
 var health: float
 var current_speed: float
+var stop: bool = false
 
 func _ready():
   health = max_health

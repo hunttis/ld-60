@@ -11,6 +11,7 @@ signal enemy_died(enemy: Enemy)
 @export_group("Basic Enemy")
 @export var basic_speed: float = 400.0
 @export var basic_max_health: float = 10.0
+@export var basic_jump_strength: float = 100.0
 @export var basic_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/basic_enemy_sprite_frames.tres")
 
 @export_group("Light Flying Enemy")

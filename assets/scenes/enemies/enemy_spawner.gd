@@ -6,6 +6,7 @@ var controller: EnemyController
 func spawn_basic_enemy() -> Enemy:
   var enemy := _create(controller.basic_speed, controller.basic_max_health, controller.basic_sprite_frames)
   enemy.add_child(GravityComponent.new())
+  enemy.add_child(EnemyJumpComponent.new(controller.basic_jump_strength))
   return _spawn(enemy, controller.walker_spawn.global_position)
 
 func spawn_light_flying_enemy() -> Enemy:
