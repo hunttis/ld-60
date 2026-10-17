@@ -3,63 +3,47 @@ class_name EnemyController extends Node
 signal enemy_died(enemy: Enemy)
 
 @export_group("Setup")
-@export var spawner: EnemySpawner
 @export var walker_spawn: Node2D
 @export var flyer_spawn: Node2D
 @export_range(0.0, 1.0) var speed_variance: float = 0.15
 
-@export_group("Basic Enemy", "basic_")
-@export var basic_speed: float = 400.0
-@export var basic_max_health: float = 10.0
-@export var basic_jump_strength: float = 100.0
-@export var basic_point_value: int = 1
-@export var basic_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/basic_enemy_sprite_frames.tres")
-@export_subgroup("Spawn Settings", "basic_spawn_")
-@export_range(0, 50, 1) var basic_spawn_x_variance: float = 0.0
-@export_range(0, 50, 1) var basic_spawn_y_variance: float = 0.0
+@export_group("Enemy Types")
+@export var basic_enemy: EnemyStats = preload("res://assets/scenes/enemies/stats/basic_enemy_stats.tres")
+@export var light_flying_enemy: EnemyStats = preload("res://assets/scenes/enemies/stats/light_flying_enemy_stats.tres")
+@export var dark_flying_enemy: EnemyStats = preload("res://assets/scenes/enemies/stats/dark_flying_enemy_stats.tres")
+@export var big_enemy: EnemyStats = preload("res://assets/scenes/enemies/stats/big_enemy_stats.tres")
 
-@export_group("Light Flying Enemy", "light_flying_")
-@export var light_flying_speed: float = 500.0
-@export var light_flying_max_health: float = 5.0
-@export var light_flying_point_value: int = 2
-@export var light_flying_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/light_flying_enemy_sprite_frames.tres")
-@export_subgroup("Spawn Settings", "light_flying_spawn_")
-@export_range(0, 50, 1) var light_flying_spawn_x_variance: float = 0.0
-@export_range(0, 50, 1) var light_flying_spawn_y_variance: float = 20.0
-
-@export_group("Dark Flying Enemy", "dark_flying_")
-@export var dark_flying_speed: float = 350.0
-@export var dark_flying_max_health: float = 15.0
-@export var dark_flying_point_value: int = 3
-@export var dark_flying_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/dark_flying_enemy_sprite_frames.tres")
-@export_subgroup("Spawn Settings", "dark_flying_spawn_")
-@export_range(0, 50, 1) var dark_flying_spawn_x_variance: float = 0.0
-@export_range(0, 50, 1) var dark_flying_spawn_y_variance: float = 20.0
-
-@export_group("Big Enemy", "big_")
-@export var big_speed: float = 250.0
-@export var big_max_health: float = 40.0
-@export var big_jump_strength: float = 100.0
-@export var big_point_value: int = 5
-@export var big_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/big_enemy_sprite_frames.tres")
-@export_subgroup("Spawn Settings", "big_spawn_")
-@export_range(0, 50, 1) var big_spawn_x_variance: float = 0.0
-@export_range(0, 50, 1) var big_spawn_y_variance: float = 0.0
+@onready var spawner: EnemySpawner = $EnemySpawner
 
 func _ready() -> void:
   spawner.controller = self
 
 func spawn_basic_enemy() -> void:
-  _add_enemy(spawner.spawn_basic_enemy())
+  spawn(Global.ENEMY_TYPE.BASIC)
 
 func spawn_dark_flying_enemy() -> void:
-  _add_enemy(spawner.spawn_dark_flying_enemy())
+  spawn(Global.ENEMY_TYPE.FLYER_DARK)
 
 func spawn_light_flying_enemy() -> void:
-  _add_enemy(spawner.spawn_light_flying_enemy())
+  spawn(Global.ENEMY_TYPE.FLYER_LIGHT)
 
 func spawn_big_enemy() -> void:
-  _add_enemy(spawner.spawn_big_enemy())
+  spawn(Global.ENEMY_TYPE.BIG)
+
+func spawn(enemy_type: Global.ENEMY_TYPE) -> void:
+  _add_enemy(spawner.spawn(get_stats(enemy_type)))
+
+func get_stats(enemy_type: Global.ENEMY_TYPE) -> EnemyStats:
+  match enemy_type:
+    Global.ENEMY_TYPE.BASIC:
+      return basic_enemy
+    Global.ENEMY_TYPE.BIG:
+      return big_enemy
+    Global.ENEMY_TYPE.FLYER_LIGHT:
+      return light_flying_enemy
+    Global.ENEMY_TYPE.FLYER_DARK:
+      return dark_flying_enemy
+  return null
 
 func _add_enemy(enemy: Enemy) -> void:
   add_child(enemy)

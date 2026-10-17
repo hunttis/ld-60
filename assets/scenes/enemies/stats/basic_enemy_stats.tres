@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://brp6sgqimlg5o"]
+
+[ext_resource type="Script" uid="uid://copbpivutsmoh" path="res://assets/scenes/enemies/enemy_stats.gd" id="1_stats"]
+[ext_resource type="SpriteFrames" uid="uid://82rcfyj3w3aq" path="res://assets/scenes/enemies/sprites/basic_enemy_sprite_frames.tres" id="2_frames"]
+
+[resource]
+script = ExtResource("1_stats")
+name = "Basic"
+speed = 600.0
+sprite_frames = ExtResource("2_frames")
+jump_strength = 100.0
+spawn_x_variance = 25.0

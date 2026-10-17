@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://btbkcqbt07nyh" path="res://assets/scenes/enemies/enemy_controller.tscn" id="2_cb5na"]
 [ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
 [ext_resource type="Script" uid="uid://qhc7ox1vvebt" path="res://assets/game_manager.gd" id="6_5aext"]
+[ext_resource type="Script" uid="uid://cq24dgkf6a010" path="res://assets/wave_manager.gd" id="8_wfsp4"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
@@ -66,28 +67,28 @@ offset_left = 54.0
 offset_right = 121.0
 offset_bottom = 23.0
 
-[node name="EnemyController" parent="." unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
-walker_spawn = NodePath("WalkerSpawn")
-flyer_spawn = NodePath("FlyerSpawn")
-speed_variance = 0.25
-basic_speed = 600.0
-basic_spawn_x_variance = 25.0
-light_flying_speed = 750.0
-dark_flying_speed = 1000.0
-
-[node name="WalkerSpawn" type="Node2D" parent="EnemyController" unique_id=2118882105]
-position = Vector2(652, 172)
-
-[node name="FlyerSpawn" type="Node2D" parent="EnemyController" unique_id=540621942]
-position = Vector2(650, 64)
-
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(10, 188)
 
 [node name="DebugControls" type="Node2D" parent="." unique_id=599521625 node_paths=PackedStringArray("enemy_controller")]
 script = ExtResource("4_cb5na")
-enemy_controller = NodePath("../EnemyController")
+enemy_controller = NodePath("../GameManager/EnemyController")
 metadata/_custom_type_script = "uid://c4j78f276ibob"
 
 [node name="GameManager" type="Node" parent="." unique_id=830809214]
 script = ExtResource("6_5aext")
+
+[node name="EnemyController" parent="GameManager" unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
+walker_spawn = NodePath("WalkerSpawn")
+flyer_spawn = NodePath("FlyerSpawn")
+speed_variance = 0.25
+
+[node name="WalkerSpawn" type="Node2D" parent="GameManager/EnemyController" unique_id=2118882105]
+position = Vector2(652, 172)
+
+[node name="FlyerSpawn" type="Node2D" parent="GameManager/EnemyController" unique_id=540621942]
+position = Vector2(650, 64)
+
+[node name="WaveManager" type="Node" parent="GameManager" unique_id=1589882287 node_paths=PackedStringArray("game_manager")]
+script = ExtResource("8_wfsp4")
+game_manager = NodePath("..")

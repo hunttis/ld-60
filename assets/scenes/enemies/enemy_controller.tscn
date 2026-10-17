@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://bcrfh0uhh80nn" path="res://assets/scenes/enemies/enemy_controller.gd" id="1_e3ats"]
 [ext_resource type="Script" uid="uid://crtf23knq678x" path="res://assets/scenes/enemies/enemy_spawner.gd" id="2_gl5u6"]
 
-[node name="EnemyController" type="Node" unique_id=709279803 node_paths=PackedStringArray("spawner")]
+[node name="EnemyController" type="Node" unique_id=709279803]
 script = ExtResource("1_e3ats")
-spawner = NodePath("EnemySpawner")
 metadata/_custom_type_script = "uid://bcrfh0uhh80nn"
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=935878156]
