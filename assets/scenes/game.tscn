@@ -71,14 +71,15 @@ walker_spawn = NodePath("WalkerSpawn")
 flyer_spawn = NodePath("FlyerSpawn")
 speed_variance = 0.25
 basic_speed = 600.0
+basic_spawn_x_variance = 25.0
 light_flying_speed = 750.0
 dark_flying_speed = 1000.0
 
 [node name="WalkerSpawn" type="Node2D" parent="EnemyController" unique_id=2118882105]
-position = Vector2(637, 175)
+position = Vector2(653, 179)
 
 [node name="FlyerSpawn" type="Node2D" parent="EnemyController" unique_id=540621942]
-position = Vector2(698, 63)
+position = Vector2(650, 64)
 
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(10, 188)
