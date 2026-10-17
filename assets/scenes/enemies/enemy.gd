@@ -1,12 +1,12 @@
 class_name Enemy extends CharacterBody2D
 
-signal on_damage_taken(damage: float, enemy: Enemy)
-signal on_death(enemy: Enemy)
-signal before_move(delta: float, enemy: Enemy)
+signal on_damage_taken(damage: float)
+signal on_death()
+signal before_move(delta: float)
 
 
-var speed: float = 400.0
-var max_health: float = 1
+@export var speed: float = 400.0
+@export var max_health: float = 1
 
 var health: float
 var current_speed: float
@@ -20,19 +20,15 @@ static func create(_speed: float, _max_health: float, _armor: float) -> Enemy:
 
 func take_damage(damage: float) -> void:
   health -= damage
-  on_damage_taken.emit(damage, self)
+  on_damage_taken.emit(damage)
   
   if health <= 0:
     die()
 
 func die() -> void:
-  on_death.emit(self)
+  on_death.emit()
   queue_free()
 
 func _physics_process(delta):
-  # Add the gravity.
-  if not is_on_floor():
-    velocity += get_gravity() * delta
-
-  before_move.emit(delta, self)
+  before_move.emit(delta)
   move_and_slide()
