@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://by87c6b1r3qay"]
+
+[ext_resource type="Script" uid="uid://dmk8svk6s7jeb" path="res://assets/scenes/ammo/cannonball.gd" id="1_ogm1h"]
+[ext_resource type="Texture2D" uid="uid://t0j5t48jjpfq" path="res://assets/images/cannonball.png" id="2_kiayx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_gmekx"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gmekx"]
+radius = 8.0
+
+[node name="Cannonball" type="RigidBody2D" unique_id=631594940]
+physics_material_override = SubResource("PhysicsMaterial_gmekx")
+continuous_cd = 2
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_ogm1h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=344921001]
+shape = SubResource("CircleShape2D_gmekx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=379572765]
+texture = ExtResource("2_kiayx")
