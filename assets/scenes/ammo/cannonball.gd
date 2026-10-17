@@ -1,8 +1,8 @@
 extends RigidBody2D
 
 var tilemap_layer: TileMapLayer
-var health = 1.0
-@export var destruction_radius: float = 12.0
+var health = 0.1
+@export var destruction_radius: float = 6
 
 func _physics_process(_delta: float) -> void:
   var center = tilemap_layer.to_local(global_position)
@@ -24,6 +24,7 @@ func _physics_process(_delta: float) -> void:
       if tile_center.distance_to(center) <= destruction_radius:
         tilemap_layer.erase_cell(coords)
         health -= 0.05
+        linear_velocity *= .75
 
   if health < 0:
     queue_free()
