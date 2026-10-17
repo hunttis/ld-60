@@ -15,6 +15,8 @@ signal enemy_died(enemy: Enemy)
 
 @onready var spawner: EnemySpawner = $EnemySpawner
 
+var enemy_count = 0
+
 func _ready() -> void:
   spawner.controller = self
 
@@ -29,6 +31,9 @@ func spawn_light_flying_enemy() -> void:
 
 func spawn_big_enemy() -> void:
   spawn(Global.ENEMY_TYPE.BIG)
+
+func spawn_stats(stats: EnemyStats) -> void:
+  _add_enemy(spawner.spawn(stats))
 
 func spawn(enemy_type: Global.ENEMY_TYPE) -> void:
   _add_enemy(spawner.spawn(get_stats(enemy_type)))
@@ -47,8 +52,12 @@ func get_stats(enemy_type: Global.ENEMY_TYPE) -> EnemyStats:
 
 func _add_enemy(enemy: Enemy) -> void:
   add_child(enemy)
+  enemy_count += 1
   enemy.on_death.connect(_on_enemy_death.bind(enemy))
 
 func _on_enemy_death(enemy: Enemy) -> void:
   enemy_died.emit(enemy)
   Events.enemy_died.emit(enemy.point_value, enemy.global_position)
+  enemy_count -= 1
+  if enemy_count == 0:
+    Events.wave_complete.emit()

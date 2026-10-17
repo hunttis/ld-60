@@ -1,6 +1,6 @@
-[gd_resource type="Resource" script_class="EnemyStats" format=3]
+[gd_resource type="Resource" script_class="EnemyStats" format=3 uid="uid://dn2jkqruainbb"]
 
-[ext_resource type="Script" path="res://assets/scenes/enemies/enemy_stats.gd" id="1_stats"]
+[ext_resource type="Script" uid="uid://copbpivutsmoh" path="res://assets/scenes/enemies/enemy_stats.gd" id="1_stats"]
 [ext_resource type="SpriteFrames" uid="uid://18bjpfd4kaqn" path="res://assets/scenes/enemies/sprites/big_enemy_sprite_frames.tres" id="2_frames"]
 
 [resource]
@@ -10,8 +10,5 @@ speed = 250.0
 max_health = 40.0
 point_value = 5
 sprite_frames = ExtResource("2_frames")
-has_gravity = true
 jump_strength = 100.0
-spawn_point = 0
-spawn_x_variance = 0.0
-spawn_y_variance = 0.0
+unlocks_at_wave = 5

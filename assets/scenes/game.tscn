@@ -89,6 +89,7 @@ position = Vector2(652, 172)
 [node name="FlyerSpawn" type="Node2D" parent="GameManager/EnemyController" unique_id=540621942]
 position = Vector2(650, 64)
 
-[node name="WaveManager" type="Node" parent="GameManager" unique_id=1589882287 node_paths=PackedStringArray("game_manager")]
+[node name="WaveManager" type="Node" parent="GameManager" unique_id=1589882287 node_paths=PackedStringArray("game_manager", "enemy_controller")]
 script = ExtResource("8_wfsp4")
 game_manager = NodePath("..")
+enemy_controller = NodePath("../EnemyController")
