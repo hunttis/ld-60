@@ -43,7 +43,6 @@ func take_damage(damage: float) -> void:
 
 func die() -> void:
   on_death.emit()
-  Events.enemy_died.emit(point_value, global_position)
   queue_free()
 
 func _physics_process(delta):
