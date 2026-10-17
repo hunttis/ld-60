@@ -1,7 +1,7 @@
 extends RigidBody2D
 
 var tilemap_layer: TileMapLayer
-var health = 0.1
+var health = 15
 @export var destruction_radius: float = 6
 
 func _physics_process(_delta: float) -> void:
@@ -22,8 +22,12 @@ func _physics_process(_delta: float) -> void:
 
       # Destroy only tiles inside the circular radius.
       if tile_center.distance_to(center) <= destruction_radius:
-        tilemap_layer.erase_cell(coords)
-        health -= 0.05
+        var info = tilemap_layer.get_cell_tile_data(coords)
+        var tile_hitpoints = info.get_custom_data("hitpoints")
+        print("Hit tile HP: ", tile_hitpoints)
+        if health > tile_hitpoints:
+          tilemap_layer.erase_cell(coords)
+        health -= tile_hitpoints
         linear_velocity *= .75
 
   if health < 0:
