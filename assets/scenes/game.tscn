@@ -11,8 +11,8 @@ script = ExtResource("1_dis88")
 [node name="CannonParametersPanel" type="Panel" parent="." unique_id=1670237246]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 127.0
-offset_bottom = 55.0
+offset_right = 140.0
+offset_bottom = 62.0
 
 [node name="AngleLabel" type="Label" parent="CannonParametersPanel" unique_id=1034256158]
 layout_mode = 0
@@ -29,6 +29,22 @@ offset_left = 58.0
 offset_top = 3.0
 offset_right = 108.0
 offset_bottom = 28.0
+
+[node name="PowerLabel" type="Label" parent="CannonParametersPanel" unique_id=1927396480]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 98.0
+offset_bottom = 53.0
+text = "Shot power:"
+
+[node name="PowerValue" type="Label" parent="CannonParametersPanel" unique_id=1717940204]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 100.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 53.0
 
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(15, 360)
