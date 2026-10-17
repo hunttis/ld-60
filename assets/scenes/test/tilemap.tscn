@@ -1,5 +1,6 @@
 [gd_scene format=4 uid="uid://caks8edhjdicg"]
 
+[ext_resource type="Texture2D" uid="uid://6b1jup8gw4xl" path="res://assets/images/ld-60-background.png" id="1_p3odt"]
 [ext_resource type="Texture2D" uid="uid://b3wwm3ni0llij" path="res://assets/images/tiles-ground.png" id="2_fbngh"]
 [ext_resource type="Texture2D" uid="uid://cdol1ynie1p03" path="res://assets/images/tiles-ground-4px.png" id="2_p3odt"]
 
@@ -126,6 +127,12 @@ terrain_set_0/terrain_2/color = Color(0.113407396, 0.11230158, 0.11719271, 1)
 sources/0 = SubResource("TileSetAtlasSource_d6dgf")
 
 [node name="Tilemap" type="Node2D" unique_id=397394120]
+
+[node name="BackgroundSky" type="TextureRect" parent="." unique_id=1993284459]
+offset_right = 640.0
+offset_bottom = 360.0
+texture = ExtResource("1_p3odt")
+stretch_mode = 1
 
 [node name="Tilemap8px" type="TileMapLayer" parent="." unique_id=2138856260]
 visible = false
