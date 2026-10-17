@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://41ihcei70jgf"]
 
-[ext_resource type="Script" uid="uid://dx87gxngtpab5" path="res://assets/scenes/player.gd" id="1_cb66b"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ngg0"]
-size = Vector2(16, 16)
+[ext_resource type="PackedScene" uid="uid://c4rilst8won7a" path="res://assets/scenes/player/player.tscn" id="1_cb66b"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 
@@ -12,7 +9,5 @@ offset_right = 156.0
 offset_bottom = 23.0
 text = "Game happens here"
 
-[node name="Player" type="Sprite2D" parent="." unique_id=1423219332]
-position = Vector2(100, 100)
-texture = SubResource("PlaceholderTexture2D_7ngg0")
-script = ExtResource("1_cb66b")
+[node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
+position = Vector2(15, 360)
