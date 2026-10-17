@@ -1,11 +1,10 @@
 extends RigidBody2D
 
+var tilemap_layer: TileMapLayer
 var health = 1.0
 @export var destruction_radius: float = 12.0
 
 func _physics_process(_delta: float) -> void:
-
-  var tilemap_layer: TileMapLayer =%LevelData
   var center = tilemap_layer.to_local(global_position)
   var center_coords = tilemap_layer.local_to_map(center)
   var tile_size = Vector2i(4, 4)

@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://41ihcei70jgf"]
 
-[ext_resource type="PackedScene" uid="uid://caks8edhjdicg" path="res://assets/scenes/test/tilemap.tscn" id="1_5gf0t"]
+[ext_resource type="PackedScene" uid="uid://caks8edhjdicg" path="res://assets/scenes/terrain/tilemap.tscn" id="1_5gf0t"]
 [ext_resource type="PackedScene" uid="uid://c4rilst8won7a" path="res://assets/scenes/player/player.tscn" id="1_cb66b"]
 [ext_resource type="Script" uid="uid://c86vwo6cckj2k" path="res://assets/scenes/game.gd" id="1_dis88"]
+[ext_resource type="PackedScene" uid="uid://by87c6b1r3qay" path="res://assets/scenes/ammo/cannonball.tscn" id="2_5aext"]
 [ext_resource type="PackedScene" uid="uid://btbkcqbt07nyh" path="res://assets/scenes/enemies/enemy_controller.tscn" id="2_cb5na"]
 [ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
+projectile_scene = ExtResource("2_5aext")
 
 [node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("1_5gf0t")]
 
