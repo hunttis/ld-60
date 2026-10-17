@@ -7,7 +7,7 @@ extends Node2D
 @onready var cannon = $Player/Cannon
 @onready var tilemap_layer = $Terrain/LevelData
 
-@export var shoot_speed: float = 250.0
+@export var shoot_speed: float = 90
 
 func _ready() -> void:
   cannon.angle_changed.connect(func(angle: float):
@@ -21,10 +21,15 @@ func _ready() -> void:
   cannon.emit_start_values()
 
 func shoot(angle: float, power: int) -> void:
-    var cannonball = projectile_scene.instantiate() as RigidBody2D
-    cannonball.tilemap_layer = tilemap_layer
+  var cannonball = projectile_scene.instantiate() as RigidBody2D
+  cannonball.tilemap_layer = tilemap_layer
 
-    get_tree().current_scene.add_child(cannonball)
-    cannonball.global_position = cannon.global_position
-    var direction = Vector2(angle/100, -angle/100)
-    cannonball.linear_velocity = direction * shoot_speed * power
+  var angle_radians: float = deg_to_rad(angle)
+  var direction: Vector2 = Vector2(
+      cos(angle_radians),
+      -sin(angle_radians)
+  )
+
+  get_tree().current_scene.add_child(cannonball)
+  cannonball.global_position = cannon.global_position
+  cannonball.linear_velocity = direction * shoot_speed * power
