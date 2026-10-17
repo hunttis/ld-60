@@ -1,7 +1,10 @@
 [gd_scene format=3 uid="uid://41ihcei70jgf"]
 
+[ext_resource type="PackedScene" uid="uid://caks8edhjdicg" path="res://assets/scenes/test/tilemap.tscn" id="1_5gf0t"]
 [ext_resource type="PackedScene" uid="uid://c4rilst8won7a" path="res://assets/scenes/player/player.tscn" id="1_cb66b"]
 [ext_resource type="Script" uid="uid://c86vwo6cckj2k" path="res://assets/scenes/game.gd" id="1_dis88"]
+[ext_resource type="PackedScene" uid="uid://btbkcqbt07nyh" path="res://assets/scenes/enemies/enemy_controller.tscn" id="2_cb5na"]
+[ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
 
 [sub_resource type="TileSet" id="TileSet_a648p"]
 
@@ -46,8 +49,30 @@ offset_top = 28.0
 offset_right = 130.0
 offset_bottom = 53.0
 
+[node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("1_5gf0t")]
+
+[node name="EnemyController" parent="." unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
+walker_spawn = NodePath("WalkerSpawn")
+flyer_spawn = NodePath("FlyerSpawn")
+
+[node name="WalkerSpawn" type="Node2D" parent="EnemyController" unique_id=2118882105]
+position = Vector2(637, 175)
+
+[node name="FlyerSpawn" type="Node2D" parent="EnemyController" unique_id=540621942]
+position = Vector2(698, 63)
+
+[node name="RemoveMeLabel" type="Label" parent="." unique_id=2071767456]
+offset_right = 156.0
+offset_bottom = 23.0
+text = "Game happens here"
+
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(15, 360)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=993401657]
 tile_set = SubResource("TileSet_a648p")
+
+[node name="DebugControls" type="Node2D" parent="." unique_id=599521625 node_paths=PackedStringArray("enemy_controller")]
+script = ExtResource("4_cb5na")
+enemy_controller = NodePath("../EnemyController")
+metadata/_custom_type_script = "uid://c4j78f276ibob"

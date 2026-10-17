@@ -4,21 +4,32 @@ signal on_damage_taken(damage: float)
 signal on_death()
 signal before_move(delta: float)
 
+@onready var sprite = $Sprite
+@onready var hurtbox = $EnemyHurtbox/Hurtbox
+@onready var collision = $Collision
 
 @export var speed: float = 400.0
 @export var max_health: float
+@export var sprite_frames: SpriteFrames
 
 var health: float
 var current_speed: float
 
 func _ready():
   health = max_health
+  sprite.sprite_frames = sprite_frames
+  sprite.play("default")
+  var collider_shape = RectangleShape2D.new()
+  var hurtbox_shape = RectangleShape2D.new()
+  hurtbox_shape.size = sprite_frames.get_frame_texture("default",0).get_size()
+  collider_shape.size = sprite_frames.get_frame_texture("default",0).get_size()
+  hurtbox.shape = hurtbox_shape
+  collision.shape = collider_shape
 
-static func create(_speed: float, _max_health: float, _armor: float) -> Enemy:
+static func create(_speed: float, _max_health: float) -> Enemy:
   var enemy: Enemy = load("res://assets/scenes/enemies/enemy.tscn").instantiate()
   enemy.speed = _speed
   enemy.max_health = _max_health
-  enemy.health = _max_health
   return enemy
 
 func take_damage(damage: float) -> void:

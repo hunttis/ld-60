@@ -9,6 +9,7 @@ func _connect_signals() -> void:
 
 func _follow_path(delta: float) -> void:
   if !path:
+    print_debug("No path set!")
     return
   
   var local_pos = path.to_local(enemy.global_position)
