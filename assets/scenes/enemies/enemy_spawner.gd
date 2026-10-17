@@ -17,6 +17,12 @@ func spawn_dark_flying_enemy() -> Enemy:
   var enemy := _create(controller.dark_flying_speed, controller.dark_flying_max_health, controller.dark_flying_sprite_frames, controller.dark_flying_point_value)
   return _spawn(enemy, _add_variance(controller.flyer_spawn.global_position, controller.dark_flying_spawn_x_variance, controller.dark_flying_spawn_y_variance))
 
+func spawn_big_enemy() -> Enemy:
+  var enemy := _create(controller.big_speed, controller.big_max_health, controller.big_sprite_frames, controller.big_point_value)
+  enemy.add_child(GravityComponent.new())
+  enemy.add_child(EnemyJumpComponent.new(controller.big_jump_strength))
+  return _spawn(enemy, _add_variance(controller.walker_spawn.global_position, controller.big_spawn_x_variance, controller.big_spawn_y_variance))
+
 func _add_variance(spawn_position: Vector2, x_variance: float = 0, y_variance: float = 0) -> Vector2:
   var spawn_x = spawn_position.x + randf_range(-x_variance, x_variance)
   var spawn_y = spawn_position.y + randf_range(-y_variance, y_variance)

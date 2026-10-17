@@ -36,6 +36,16 @@ signal enemy_died(enemy: Enemy)
 @export_range(0, 50, 1) var dark_flying_spawn_x_variance: float = 0.0
 @export_range(0, 50, 1) var dark_flying_spawn_y_variance: float = 20.0
 
+@export_group("Big Enemy", "big_")
+@export var big_speed: float = 250.0
+@export var big_max_health: float = 40.0
+@export var big_jump_strength: float = 100.0
+@export var big_point_value: int = 5
+@export var big_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/big_enemy_sprite_frames.tres")
+@export_subgroup("Spawn Settings", "big_spawn_")
+@export_range(0, 50, 1) var big_spawn_x_variance: float = 0.0
+@export_range(0, 50, 1) var big_spawn_y_variance: float = 0.0
+
 func _ready() -> void:
   spawner.controller = self
 
@@ -47,6 +57,9 @@ func spawn_dark_flying_enemy() -> void:
 
 func spawn_light_flying_enemy() -> void:
   _add_enemy(spawner.spawn_light_flying_enemy())
+
+func spawn_big_enemy() -> void:
+  _add_enemy(spawner.spawn_big_enemy())
 
 func _add_enemy(enemy: Enemy) -> void:
   add_child(enemy)

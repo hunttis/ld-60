@@ -23,5 +23,11 @@ func _process(_delta):
   if Input.is_action_just_pressed("debug_spawn_flying_enemy"):
     enemy_controller.spawn_dark_flying_enemy()
   
+  if Input.is_action_just_pressed("debug_spawn_flying_2"):
+    enemy_controller.spawn_light_flying_enemy()
+  
+  if Input.is_action_just_pressed("debug_spawn_big_enemy"):
+    enemy_controller.spawn_big_enemy()
+  
   if Input.is_action_just_pressed("debug_floating_text"):
     Events.enemy_died.emit(randi_range(1,5), get_global_mouse_position())

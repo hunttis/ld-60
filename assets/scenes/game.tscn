@@ -76,7 +76,7 @@ light_flying_speed = 750.0
 dark_flying_speed = 1000.0
 
 [node name="WalkerSpawn" type="Node2D" parent="EnemyController" unique_id=2118882105]
-position = Vector2(653, 179)
+position = Vector2(208, 123)
 
 [node name="FlyerSpawn" type="Node2D" parent="EnemyController" unique_id=540621942]
 position = Vector2(650, 64)
