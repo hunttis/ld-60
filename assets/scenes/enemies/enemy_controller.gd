@@ -12,16 +12,19 @@ signal enemy_died(enemy: Enemy)
 @export var basic_speed: float = 400.0
 @export var basic_max_health: float = 10.0
 @export var basic_jump_strength: float = 100.0
+@export var basic_point_value: int = 1
 @export var basic_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/basic_enemy_sprite_frames.tres")
 
 @export_group("Light Flying Enemy")
 @export var light_flying_speed: float = 500.0
 @export var light_flying_max_health: float = 5.0
+@export var light_flying_point_value: int = 2
 @export var light_flying_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/light_flying_enemy_sprite_frames.tres")
 
 @export_group("Dark Flying Enemy")
 @export var dark_flying_speed: float = 350.0
 @export var dark_flying_max_health: float = 15.0
+@export var dark_flying_point_value: int = 3
 @export var dark_flying_sprite_frames: SpriteFrames = preload("res://assets/scenes/enemies/sprites/dark_flying_enemy_sprite_frames.tres")
 
 func _ready() -> void:
@@ -42,3 +45,4 @@ func _add_enemy(enemy: Enemy) -> void:
 
 func _on_enemy_death(enemy: Enemy) -> void:
   enemy_died.emit(enemy)
+  Events.enemy_died.emit(enemy.point_value, enemy.global_position)

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dj7l1youhk824"]
+
+[ext_resource type="Script" uid="uid://c3ouvmvbnygmp" path="res://assets/components/floating_text_component.gd" id="1_43fwc"]
+
+[node name="FloatingTextComponent" type="Node2D" unique_id=1817787948]
+script = ExtResource("1_43fwc")
+
+[node name="Label" type="Label" parent="." unique_id=1812596022]
+offset_right = 40.0
+offset_bottom = 23.0

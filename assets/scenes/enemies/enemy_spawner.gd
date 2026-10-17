@@ -4,23 +4,24 @@ class_name EnemySpawner extends Node
 var controller: EnemyController
 
 func spawn_basic_enemy() -> Enemy:
-  var enemy := _create(controller.basic_speed, controller.basic_max_health, controller.basic_sprite_frames)
+  var enemy := _create(controller.basic_speed, controller.basic_max_health, controller.basic_sprite_frames, controller.basic_point_value)
   enemy.add_child(GravityComponent.new())
   enemy.add_child(EnemyJumpComponent.new(controller.basic_jump_strength))
   return _spawn(enemy, controller.walker_spawn.global_position)
 
 func spawn_light_flying_enemy() -> Enemy:
-  var enemy := _create(controller.light_flying_speed, controller.light_flying_max_health, controller.light_flying_sprite_frames)
+  var enemy := _create(controller.light_flying_speed, controller.light_flying_max_health, controller.light_flying_sprite_frames, controller.light_flying_point_value)
   return _spawn_flyer(enemy)
 
 func spawn_dark_flying_enemy() -> Enemy:
-  var enemy := _create(controller.dark_flying_speed, controller.dark_flying_max_health, controller.dark_flying_sprite_frames)
+  var enemy := _create(controller.dark_flying_speed, controller.dark_flying_max_health, controller.dark_flying_sprite_frames, controller.dark_flying_point_value)
   return _spawn_flyer(enemy)
 
-func _create(speed: float, max_health: float, sprite_frames: SpriteFrames) -> Enemy:
+func _create(speed: float, max_health: float, sprite_frames: SpriteFrames, point_value: int) -> Enemy:
   var variance := controller.speed_variance
   var enemy := Enemy.create(speed * randf_range(1.0 - variance, 1.0 + variance), max_health)
   enemy.sprite_frames = sprite_frames
+  enemy.point_value = point_value
   var move_component = EnemyMoveLeftComponent.new()
   enemy.add_child(move_component)
   return enemy

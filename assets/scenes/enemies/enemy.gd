@@ -11,6 +11,7 @@ signal before_move(delta: float)
 @export var speed: float = 400.0
 @export var max_health: float
 @export var sprite_frames: SpriteFrames
+@export var point_value: int = 1
 
 var health: float
 var current_speed: float
@@ -41,8 +42,8 @@ func take_damage(damage: float) -> void:
     die()
 
 func die() -> void:
-  print("should die")
   on_death.emit()
+  Events.enemy_died.emit(point_value, global_position)
   queue_free()
 
 func _physics_process(delta):

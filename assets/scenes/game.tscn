@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://by87c6b1r3qay" path="res://assets/scenes/ammo/cannonball.tscn" id="2_5aext"]
 [ext_resource type="PackedScene" uid="uid://btbkcqbt07nyh" path="res://assets/scenes/enemies/enemy_controller.tscn" id="2_cb5na"]
 [ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
+[ext_resource type="Script" uid="uid://qhc7ox1vvebt" path="res://assets/game_manager.gd" id="6_5aext"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
@@ -72,3 +73,6 @@ position = Vector2(10, 188)
 script = ExtResource("4_cb5na")
 enemy_controller = NodePath("../EnemyController")
 metadata/_custom_type_script = "uid://c4j78f276ibob"
+
+[node name="GameManager" type="Node" parent="." unique_id=830809214]
+script = ExtResource("6_5aext")
