@@ -1,15 +1,34 @@
 [gd_scene format=3 uid="uid://41ihcei70jgf"]
 
 [ext_resource type="PackedScene" uid="uid://c4rilst8won7a" path="res://assets/scenes/player/player.tscn" id="1_cb66b"]
+[ext_resource type="Script" uid="uid://c86vwo6cckj2k" path="res://assets/scenes/game.gd" id="1_dis88"]
 
 [sub_resource type="TileSet" id="TileSet_a648p"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
+script = ExtResource("1_dis88")
 
-[node name="RemoveMeLabel" type="Label" parent="." unique_id=2071767456]
-offset_right = 156.0
-offset_bottom = 23.0
-text = "Game happens here"
+[node name="CannonParametersPanel" type="Panel" parent="." unique_id=1670237246]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 127.0
+offset_bottom = 55.0
+
+[node name="AngleLabel" type="Label" parent="CannonParametersPanel" unique_id=1034256158]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 58.0
+offset_bottom = 28.0
+text = "Angle:"
+
+[node name="AngleValue" type="Label" parent="CannonParametersPanel" unique_id=2071767456]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 58.0
+offset_top = 3.0
+offset_right = 108.0
+offset_bottom = 28.0
 
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(15, 360)

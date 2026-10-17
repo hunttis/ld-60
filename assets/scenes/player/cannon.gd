@@ -6,6 +6,8 @@ const ANGLE_MOD_SPEED = 75
 const MIN_ANGLE = 5
 const MAX_ANGLE = 80
 
+signal angle_changed(angle: float)
+
 var angle: float = 45
 
 func _init() -> void:
@@ -20,3 +22,4 @@ func _process(delta: float) -> void:
 func change_cannon_angle(dir: Direction, delta: float):
   angle += dir * delta * ANGLE_MOD_SPEED
   rotation_degrees = 0 - angle
+  angle_changed.emit(angle)
