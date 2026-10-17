@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://41ihcei70jgf"]
 
 [ext_resource type="Script" uid="uid://dx87gxngtpab5" path="res://assets/scenes/player.gd" id="1_cb66b"]
+[ext_resource type="PackedScene" uid="uid://dea1cuynti57b" path="res://assets/scenes/enemies/enemy.tscn" id="2_dis88"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7ngg0"]
 size = Vector2(16, 16)
@@ -16,3 +17,7 @@ text = "Game happens here"
 position = Vector2(100, 100)
 texture = SubResource("PlaceholderTexture2D_7ngg0")
 script = ExtResource("1_cb66b")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=389833482]
+
+[node name="Enemy" parent="." unique_id=1274839022 instance=ExtResource("2_dis88")]
