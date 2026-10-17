@@ -1,30 +1,32 @@
 [gd_scene format=3 uid="uid://c4rilst8won7a"]
 
 [ext_resource type="Script" uid="uid://dx87gxngtpab5" path="res://assets/scenes/player/player.gd" id="1_xo733"]
-[ext_resource type="Texture2D" uid="uid://doxudb6mfxy64" path="res://assets/scenes/player/ball.png" id="3_wg42c"]
+[ext_resource type="Texture2D" uid="uid://c25gqu82reydq" path="res://assets/images/cannon-pipe.png" id="3_ij6fu"]
 [ext_resource type="Script" uid="uid://bc7tqt5pnnxgt" path="res://assets/scenes/player/cannon.gd" id="3_xvhxs"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kbmnw"]
+[ext_resource type="Texture2D" uid="uid://bto47euaqdyl2" path="res://assets/images/cannon-base.png" id="4_wg42c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nujxl"]
+radius = 8.0
 
 [node name="Player" type="Node2D" unique_id=71792886]
 script = ExtResource("1_xo733")
 
 [node name="Cannon" type="Sprite2D" parent="." unique_id=1842269689]
+position = Vector2(2, -4)
 script = ExtResource("3_xvhxs")
 
 [node name="CannonSprite" type="Sprite2D" parent="Cannon" unique_id=1141569379]
-scale = Vector2(20, 2)
-texture = SubResource("PlaceholderTexture2D_kbmnw")
+rotation = 1.5707964
+texture = ExtResource("3_ij6fu")
 centered = false
-offset = Vector2(0, -0.5)
+offset = Vector2(-2, -18)
 
 [node name="Turret" type="CharacterBody2D" parent="." unique_id=172730319]
 
 [node name="TurretCollisionShape" type="CollisionShape2D" parent="Turret" unique_id=1492193517]
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_nujxl")
 
 [node name="TurretSprite" type="Sprite2D" parent="Turret" unique_id=2117592106]
-scale = Vector2(0.085, 0.085)
-texture = ExtResource("3_wg42c")
+position = Vector2(0, -8)
+texture = ExtResource("4_wg42c")

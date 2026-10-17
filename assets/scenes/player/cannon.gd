@@ -4,7 +4,7 @@ enum Direction { UP = 1, DOWN = -1 }
 
 const ANGLE_MOD_SPEED = 75
 const MIN_ANGLE = 5
-const MAX_ANGLE = 90
+const MAX_ANGLE = 80
 
 var angle: float = 45
 
