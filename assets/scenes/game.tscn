@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://btbkcqbt07nyh" path="res://assets/scenes/enemies/enemy_controller.tscn" id="2_cb5na"]
 [ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
 
-[sub_resource type="TileSet" id="TileSet_a648p"]
-
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
+
+[node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("1_5gf0t")]
 
 [node name="CannonParametersPanel" type="Panel" parent="." unique_id=1670237246]
 offset_left = 5.0
@@ -49,11 +49,12 @@ offset_top = 28.0
 offset_right = 130.0
 offset_bottom = 53.0
 
-[node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("1_5gf0t")]
-
 [node name="EnemyController" parent="." unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
 walker_spawn = NodePath("WalkerSpawn")
 flyer_spawn = NodePath("FlyerSpawn")
+basic_speed = 600.0
+light_flying_speed = 750.0
+dark_flying_speed = 1000.0
 
 [node name="WalkerSpawn" type="Node2D" parent="EnemyController" unique_id=2118882105]
 position = Vector2(637, 175)
@@ -61,16 +62,8 @@ position = Vector2(637, 175)
 [node name="FlyerSpawn" type="Node2D" parent="EnemyController" unique_id=540621942]
 position = Vector2(698, 63)
 
-[node name="RemoveMeLabel" type="Label" parent="." unique_id=2071767456]
-offset_right = 156.0
-offset_bottom = 23.0
-text = "Game happens here"
-
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
-position = Vector2(15, 360)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=993401657]
-tile_set = SubResource("TileSet_a648p")
+position = Vector2(10, 188)
 
 [node name="DebugControls" type="Node2D" parent="." unique_id=599521625 node_paths=PackedStringArray("enemy_controller")]
 script = ExtResource("4_cb5na")
