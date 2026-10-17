@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dea1cuynti57b"]
+
+[ext_resource type="Script" uid="uid://bggs8w5cdy3lq" path="res://assets/scenes/enemies/enemy.gd" id="1_hlggj"]
+[ext_resource type="Script" uid="uid://cpxp33tah80dw" path="res://assets/components/gravity_component.gd" id="2_o6yva"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1274839022]
+script = ExtResource("1_hlggj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538612608]
+
+[node name="GravityComponent" type="Node" parent="." unique_id=736499911]
+script = ExtResource("2_o6yva")
+metadata/_custom_type_script = "uid://cpxp33tah80dw"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=524089430]
