@@ -8,17 +8,13 @@ extends Node2D
 @onready var player = $Player
 @onready var tilemap_layer = $Terrain/LevelData
 
-@export var shoot_speed: float = 90
+@export var shoot_speed: float = 1000
 
 var paused = false
 
 func _ready() -> void:
-  cannon.angle_changed.connect(func(angle: float):
-    angle_value_label.text = str("%.1f" % angle)
-  )
-  cannon.power_changed.connect(func(power: int):
-    shot_power_label.text = str(power)
-  )
+  cannon.angle_changed.connect(update_ui_angle)
+  cannon.power_changed.connect(update_ui_power)
   cannon.shoot.connect(shoot)
 
   Events.player_died.connect(end_game)
@@ -36,7 +32,16 @@ func _process(delta: float) -> void:
 func toggle_pause(paused: bool):
   self.paused = paused
 
-func shoot(angle: float, power: int) -> void:
+func update_ui_angle(angle: float):
+  angle_value_label.text = str("%.1f" % angle)
+
+func update_ui_power(power: float):
+  if power == 0:
+    shot_power_label.text = "-"
+  else:
+    shot_power_label.text = str("%.0f" % (power * 1000))
+
+func shoot(angle: float, power: float) -> void:
   if paused:
     return
   var cannonball = projectile_scene.instantiate() as RigidBody2D
@@ -51,6 +56,7 @@ func shoot(angle: float, power: int) -> void:
   get_tree().current_scene.add_child(cannonball)
   cannonball.global_position = cannon.global_position
   cannonball.linear_velocity = direction * shoot_speed * power
+  update_ui_power(0)
 
 func end_game():
   Events.go_to_game_over.emit()
