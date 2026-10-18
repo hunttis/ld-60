@@ -67,7 +67,7 @@ func shoot(angle: float, power: float) -> void:
   )
 
   get_tree().current_scene.add_child(cannonball)
-  cannonball.global_position = cannon.global_position
+  cannonball.global_position = cannon.global_position + direction * 22.5
   cannonball.linear_velocity = direction * shoot_speed * power
   update_ui_power(0)
 
