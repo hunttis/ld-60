@@ -4,15 +4,14 @@ extends Node2D
 
 @onready var health: float = start_health
 
-func _on_turret_hurt_box_body_entered(body: Enemy) -> void:
+func _on_turret_hurt_box_body_entered(enemy: Enemy) -> void:
   # we should only get enemies here (because of collision masks)
-  body.point_value *= -2
-  take_damage(body)
-  body.die()
+  take_damage(enemy)
+  enemy.queue_free()
 
 func take_damage(enemy: Enemy):
-  # replace with separate property for enemies ("damage") later
-  health -= enemy.stats.max_health
+  health -= enemy.stats.damage
+  Events.player_damaged.emit(health)
   if (health <= 0):
     Events.player_died.emit()
     queue_free()

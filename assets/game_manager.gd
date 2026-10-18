@@ -10,12 +10,15 @@ class_name GameManager extends Node
 
 var points: int = 0
 var wave: int = 1
-@onready var points_value = $"../CannonParametersPanel/PointsLabel/PointsValue"
-
+@onready var points_value = $"../PointsContainer/PointsValue"
+@onready var health_value = $"../HealthContainer/HealthValue"
+@onready var player = $"../Player"
 
 func _ready():
   Events.enemy_died.connect(_on_enemy_died)
+  Events.player_damaged.connect(_on_player_damaged)
   points_value.text = str(points)
+  health_value.text = str(player.start_health)
 
 func _spawn_floating_text(text: String, position: Vector2) -> void:
   var floater = FloatingTextComponent.create()
@@ -25,6 +28,10 @@ func _spawn_floating_text(text: String, position: Vector2) -> void:
 func _add_points(value: int) -> void:
   points += value
   points_value.text = str(points)
+
+func _on_player_damaged(remaining_health: float) -> void:
+  _add_points(-2)
+  health_value.text = str(remaining_health)
 
 # Runs before the enemy is freed, so its position and values are still valid
 func _on_enemy_died(enemy: Enemy) -> void:

@@ -11,6 +11,7 @@ signal reload_complete
 
 signal set_start_values
 
+signal player_damaged(health: float)
 signal player_died
 signal enemy_died(enemy: Enemy)
 

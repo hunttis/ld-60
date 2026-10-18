@@ -21,7 +21,7 @@ projectile_scene = ExtResource("2_5aext")
 offset_left = 5.0
 offset_top = 5.0
 offset_right = 140.0
-offset_bottom = 90.0
+offset_bottom = 65.0
 
 [node name="AngleLabel" type="Label" parent="CannonParametersPanel" unique_id=1034256158]
 layout_mode = 0
@@ -64,20 +64,6 @@ offset_left = 97.0
 offset_right = 127.0
 offset_bottom = 25.0
 
-[node name="PointsLabel" type="Label" parent="CannonParametersPanel" unique_id=387087511]
-layout_mode = 0
-offset_left = 4.0
-offset_top = 53.0
-offset_right = 57.0
-offset_bottom = 76.0
-text = "Points:"
-
-[node name="PointsValue" type="Label" parent="CannonParametersPanel/PointsLabel" unique_id=1234307120]
-layout_mode = 0
-offset_left = 54.0
-offset_right = 121.0
-offset_bottom = 23.0
-
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(10, 188)
 
@@ -112,3 +98,29 @@ script = ExtResource("9_pw37s")
 
 [node name="PauseMenu" parent="." unique_id=1029933016 instance=ExtResource("10_k2t1h")]
 visible = false
+
+[node name="HealthContainer" type="HBoxContainer" parent="." unique_id=1197349271]
+offset_left = 270.0
+offset_right = 370.0
+offset_bottom = 40.0
+
+[node name="HealthLabel" type="Label" parent="HealthContainer" unique_id=1649844261]
+layout_mode = 2
+text = "Health:"
+
+[node name="HealthValue" type="Label" parent="HealthContainer" unique_id=1454596085]
+layout_mode = 2
+text = "—"
+
+[node name="PointsContainer" type="HBoxContainer" parent="." unique_id=119879873]
+offset_left = 540.0
+offset_right = 640.0
+offset_bottom = 40.0
+
+[node name="PointsLabel" type="Label" parent="PointsContainer" unique_id=387087511]
+layout_mode = 2
+text = "Points:"
+
+[node name="PointsValue" type="Label" parent="PointsContainer" unique_id=1234307120]
+layout_mode = 2
+text = "—"
