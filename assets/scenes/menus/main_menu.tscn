@@ -1,9 +1,21 @@
 [gd_scene format=3 uid="uid://17qoniqtyvb4"]
 
 [ext_resource type="Script" uid="uid://blo50cupp2cta" path="res://assets/scenes/menus/main_menu.gd" id="1_uu6ob"]
+[ext_resource type="Texture2D" uid="uid://bto47euaqdyl2" path="res://assets/images/cannon-base.png" id="2_eoi6q"]
+[ext_resource type="Texture2D" uid="uid://6b1jup8gw4xl" path="res://assets/images/ld-60-background.png" id="2_hqx7k"]
+[ext_resource type="Texture2D" uid="uid://c25gqu82reydq" path="res://assets/images/cannon-pipe.png" id="3_hhlo6"]
+[ext_resource type="Texture2D" uid="uid://t0j5t48jjpfq" path="res://assets/images/cannonball.png" id="5_p1a3l"]
+
+[sub_resource type="Theme" id="Theme_eoi6q"]
+RichTextLabel/constants/outline_size = 12
 
 [node name="MainMenu" type="Node2D" unique_id=2144547041]
 script = ExtResource("1_uu6ob")
+
+[node name="Ld60Background" type="Sprite2D" parent="." unique_id=1502784361]
+position = Vector2(320, 180)
+scale = Vector2(20, 1)
+texture = ExtResource("2_hqx7k")
 
 [node name="ScreenSizeContainer" type="Control" parent="." unique_id=1983318640]
 custom_minimum_size = Vector2(640, 360)
@@ -30,16 +42,20 @@ size_flags_stretch_ratio = 0.5
 [node name="GameTitle" type="RichTextLabel" parent="ScreenSizeContainer/VerticalContainer" unique_id=969225757]
 layout_mode = 2
 size_flags_vertical = 3
+theme = SubResource("Theme_eoi6q")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 64
 bbcode_enabled = true
-text = "[center]Game Title[/center]"
+text = "[wave]Proper Cannoning[/wave]"
 fit_content = true
 scroll_active = false
+horizontal_alignment = 1
 
 [node name="MiddleSpacer" type="Control" parent="ScreenSizeContainer/VerticalContainer" unique_id=618976484]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.3
 
 [node name="MenuButtons" type="Control" parent="ScreenSizeContainer/VerticalContainer" unique_id=204437329]
 layout_mode = 2
@@ -58,7 +74,16 @@ focus_neighbor_top = NodePath("../QuitButton")
 focus_neighbor_bottom = NodePath("../OptionsButton")
 focus_next = NodePath("../OptionsButton")
 focus_previous = NodePath("../QuitButton")
+theme_override_constants/outline_size = 8
 text = "Start"
+
+[node name="MiddleSpacer2" type="Control" parent="ScreenSizeContainer/VerticalContainer/MenuButtons" unique_id=200528148]
+anchors_preset = 0
+offset_top = -46.0
+offset_right = 640.0
+offset_bottom = -4.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="OptionsButton" type="Button" parent="ScreenSizeContainer/VerticalContainer/MenuButtons" unique_id=591116847]
 layout_mode = 1
@@ -77,7 +102,16 @@ focus_neighbor_top = NodePath("../StartButton")
 focus_neighbor_bottom = NodePath("../QuitButton")
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../StartButton")
+theme_override_constants/outline_size = 8
 text = "Options"
+
+[node name="MiddleSpacer3" type="Control" parent="ScreenSizeContainer/VerticalContainer/MenuButtons" unique_id=1559498317]
+anchors_preset = 0
+offset_top = -46.0
+offset_right = 640.0
+offset_bottom = -4.0
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
 
 [node name="QuitButton" type="Button" parent="ScreenSizeContainer/VerticalContainer/MenuButtons" unique_id=275128954]
 layout_mode = 1
@@ -95,12 +129,40 @@ focus_neighbor_top = NodePath("../OptionsButton")
 focus_neighbor_bottom = NodePath("../StartButton")
 focus_next = NodePath("../StartButton")
 focus_previous = NodePath("../OptionsButton")
+theme_override_constants/outline_size = 8
 text = "Quit"
 
 [node name="BottomSpacer" type="Control" parent="ScreenSizeContainer/VerticalContainer" unique_id=510074509]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.3
+
+[node name="CannonPipe" type="Sprite2D" parent="ScreenSizeContainer/VerticalContainer" unique_id=591394812]
+position = Vector2(56.000008, 313)
+rotation = 0.64053583
+scale = Vector2(3.9999998, 3.9999998)
+texture = ExtResource("3_hhlo6")
+
+[node name="CannonBase" type="Sprite2D" parent="ScreenSizeContainer/VerticalContainer" unique_id=1395525696]
+position = Vector2(28, 331)
+scale = Vector2(4, 4)
+texture = ExtResource("2_eoi6q")
+
+[node name="Cannonball" type="Sprite2D" parent="." unique_id=1918377222]
+position = Vector2(157, 192)
+texture = ExtResource("5_p1a3l")
+
+[node name="Cannonball2" type="Sprite2D" parent="." unique_id=1537892023]
+position = Vector2(114, 236)
+texture = ExtResource("5_p1a3l")
+
+[node name="Cannonball3" type="Sprite2D" parent="." unique_id=780564145]
+position = Vector2(344, 41)
+texture = ExtResource("5_p1a3l")
+
+[node name="Cannonball4" type="Sprite2D" parent="." unique_id=1735846764]
+position = Vector2(502, 17)
+texture = ExtResource("5_p1a3l")
 
 [connection signal="pressed" from="ScreenSizeContainer/VerticalContainer/MenuButtons/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="ScreenSizeContainer/VerticalContainer/MenuButtons/OptionsButton" to="." method="_on_options_button_pressed"]

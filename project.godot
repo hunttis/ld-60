@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="LudumDareTemplate"
+config/name="Proper Cannoning"
 run/main_scene="uid://d3eo74i1aytio"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
