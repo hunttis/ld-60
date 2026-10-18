@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*res://assets/autoloads/events.gd"
 Global="*res://assets/autoloads/global.gd"
+BackgroundMusic="*uid://dbmqnebu7t0xr"
 
 [display]
 
