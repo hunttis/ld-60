@@ -27,7 +27,7 @@ func _physics_process(_delta: float) -> void:
       if tile_center.distance_to(center) <= destruction_radius:
         var info = tilemap_layer.get_cell_tile_data(coords)
         var tile_hitpoints = info.get_custom_data("hitpoints")
-        print("Hit tile HP: ", tile_hitpoints)
+        #print("Hit tile HP: ", tile_hitpoints)
         if health > tile_hitpoints:
           tilemap_layer.erase_cell(coords)
         health -= tile_hitpoints

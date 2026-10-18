@@ -13,11 +13,12 @@ script = ExtResource("1_hlggj")
 
 [node name="EnemyHurtbox" type="Area2D" parent="." unique_id=232993816]
 collision_layer = 2
-collision_mask = 0
-monitoring = false
+collision_mask = 8
 script = ExtResource("3_jitnm")
 
 [node name="Hurtbox" type="CollisionShape2D" parent="EnemyHurtbox" unique_id=1232385776]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=1637856193]
 sprite_frames = ExtResource("3_47wg6")
+
+[connection signal="body_entered" from="EnemyHurtbox" to="." method="_on_enemy_hurtbox_body_entered"]

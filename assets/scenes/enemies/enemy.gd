@@ -62,3 +62,9 @@ func die() -> void:
 func _physics_process(delta):
   before_move.emit(delta)
   move_and_slide()
+
+func _on_enemy_hurtbox_body_entered(projectile: Node2D) -> void:
+  # only matches collision layer 4 (projectiles)
+  var cannonball_speed = projectile.linear_velocity.length()
+  take_damage(cannonball_speed / 20)
+  projectile.health -= 5
