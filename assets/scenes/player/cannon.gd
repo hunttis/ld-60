@@ -9,7 +9,7 @@ const FINESSE_ANGLE_MULTIPLIER = .5
 const MIN_POWER = .1
 const MAX_POWER = .999
 const RELOAD_DELAY = 1.0
-const CHARGE_SPEED_MULTIPLIER = .75
+const CHARGE_SPEED_MULTIPLIER = .5
 
 signal angle_changed(angle: float)
 signal power_changed(power: float)
