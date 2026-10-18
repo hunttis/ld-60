@@ -13,6 +13,6 @@ offset_top = 220.0
 offset_right = 640.0
 offset_bottom = 270.0
 size_flags_horizontal = 4
-text = "Press space to start over"
+text = "Press ESC to start over"
 horizontal_alignment = 1
 vertical_alignment = 1
