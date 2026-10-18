@@ -6,7 +6,8 @@ const ANGLE_MOD_SPEED = 75
 const MIN_ANGLE = 5
 const MAX_ANGLE = 80
 const MIN_POWER = .1
-const MAX_POWER = 1.0
+const MAX_POWER = .999
+const RELOAD_DELAY = 2.0
 
 signal angle_changed(angle: float)
 signal power_changed(power: float)
@@ -14,6 +15,7 @@ signal shoot(angle: float, power: float)
 
 var angle: float = 45
 var shot_power: float = 0
+var shot_delay: float = RELOAD_DELAY
 var paused: bool = false
 
 func _init() -> void:
@@ -33,18 +35,22 @@ func emit_start_values() -> void:
 func _process(delta: float) -> void:
   if paused:
     return
+
+  if shot_delay > 0:
+    shot_delay = max(shot_delay - delta, 0)
+
   if Input.is_action_pressed("lower_cannon_angle") && angle > MIN_ANGLE:
     change_cannon_angle(Direction.DOWN, delta)
   if Input.is_action_pressed("raise_cannon_angle") && angle < MAX_ANGLE:
     change_cannon_angle(Direction.UP, delta)
   if Input.is_action_just_pressed("shoot"):
     shot_power = MIN_POWER
-  if Input.is_action_pressed("shoot") && shot_power < MAX_POWER:
-    shot_power += delta
-    shot_power = min(shot_power, MAX_POWER)
+  if Input.is_action_pressed("shoot") && shot_delay == 0 && shot_power < MAX_POWER:
+    shot_power = min(shot_power + delta, MAX_POWER)
     power_changed.emit(shot_power)
-  if Input.is_action_just_released("shoot"):
+  if Input.is_action_just_released("shoot") && shot_delay == 0:
     shoot.emit(angle, shot_power)
+    shot_delay = RELOAD_DELAY
 
 func change_cannon_angle(dir: Direction, delta: float):
   angle += dir * delta * ANGLE_MOD_SPEED
