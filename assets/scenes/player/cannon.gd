@@ -5,9 +5,11 @@ enum Direction { UP = 1, DOWN = -1 }
 const ANGLE_MOD_SPEED = 75
 const MIN_ANGLE = 5
 const MAX_ANGLE = 80
+const FINESSE_ANGLE_MULTIPLIER = .5
 const MIN_POWER = .1
 const MAX_POWER = .999
 const RELOAD_DELAY = 1.0
+const CHARGE_SPEED_MULTIPLIER = .75
 
 signal angle_changed(angle: float)
 signal power_changed(power: float)
@@ -42,13 +44,19 @@ func _process(delta: float) -> void:
       Events.reload_complete.emit()
 
   if Input.is_action_pressed("lower_cannon_angle") && angle > MIN_ANGLE:
-    change_cannon_angle(Direction.DOWN, delta)
+    var angle_change = delta
+    if Input.is_action_pressed("angle_finesse_modifier"):
+      angle_change *= FINESSE_ANGLE_MULTIPLIER
+    change_cannon_angle(Direction.DOWN, angle_change)
   if Input.is_action_pressed("raise_cannon_angle") && angle < MAX_ANGLE:
-    change_cannon_angle(Direction.UP, delta)
+    var angle_change = delta
+    if Input.is_action_pressed("angle_finesse_modifier"):
+      angle_change *= FINESSE_ANGLE_MULTIPLIER
+    change_cannon_angle(Direction.UP, angle_change)
   if Input.is_action_just_pressed("shoot"):
     shot_power = MIN_POWER
   if Input.is_action_pressed("shoot") && shot_delay == 0 && shot_power < MAX_POWER:
-    shot_power = min(shot_power + delta, MAX_POWER)
+    shot_power = min(shot_power + delta * CHARGE_SPEED_MULTIPLIER, MAX_POWER)
     power_changed.emit(shot_power)
   if Input.is_action_just_released("shoot") && shot_delay == 0:
     shoot.emit(angle, shot_power)
