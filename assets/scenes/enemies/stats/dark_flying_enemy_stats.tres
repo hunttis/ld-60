@@ -10,6 +10,7 @@ speed = 750.0
 max_health = 15.0
 point_value = 3
 sprite_frames = ExtResource("2_frames")
+damage = 15.0
 has_gravity = false
 spawn_point = 1
 unlocks_at_wave = 2
