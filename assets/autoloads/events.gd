@@ -6,6 +6,8 @@ signal go_to_game
 signal go_to_game_over
 signal toggle_pause_mode(paused: bool)
 
+signal reloading
+signal reload_complete
 
 signal set_start_values
 

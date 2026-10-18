@@ -7,7 +7,7 @@ const MIN_ANGLE = 5
 const MAX_ANGLE = 80
 const MIN_POWER = .1
 const MAX_POWER = .999
-const RELOAD_DELAY = 2.0
+const RELOAD_DELAY = 1.0
 
 signal angle_changed(angle: float)
 signal power_changed(power: float)
@@ -38,6 +38,8 @@ func _process(delta: float) -> void:
 
   if shot_delay > 0:
     shot_delay = max(shot_delay - delta, 0)
+    if shot_delay == 0:
+      Events.reload_complete.emit()
 
   if Input.is_action_pressed("lower_cannon_angle") && angle > MIN_ANGLE:
     change_cannon_angle(Direction.DOWN, delta)
@@ -51,6 +53,7 @@ func _process(delta: float) -> void:
   if Input.is_action_just_released("shoot") && shot_delay == 0:
     shoot.emit(angle, shot_power)
     shot_delay = RELOAD_DELAY
+    Events.reloading.emit()
 
 func change_cannon_angle(dir: Direction, delta: float):
   angle += dir * delta * ANGLE_MOD_SPEED

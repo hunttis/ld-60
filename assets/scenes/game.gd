@@ -3,7 +3,9 @@ extends Node2D
 @export var projectile_scene: PackedScene
 
 @onready var angle_value_label = $CannonParametersPanel/AngleValue
-@onready var shot_power_label = $CannonParametersPanel/PowerValue
+@onready var shot_power_label = $CannonParametersPanel/PowerLabel
+@onready var shot_power_value_label = $CannonParametersPanel/PowerLabel/PowerValue
+@onready var reloading_label = $CannonParametersPanel/ReloadingLabel
 @onready var cannon = $Player/Cannon
 @onready var player = $Player
 @onready var tilemap_layer = $Terrain/LevelData
@@ -16,6 +18,9 @@ func _ready() -> void:
   cannon.angle_changed.connect(update_ui_angle)
   cannon.power_changed.connect(update_ui_power)
   cannon.shoot.connect(shoot)
+  
+  Events.reloading.connect(on_reload_start)
+  Events.reload_complete.connect(on_reload_complete)
 
   Events.player_died.connect(end_game)
   Events.toggle_pause_mode.connect(toggle_pause)
@@ -37,9 +42,17 @@ func update_ui_angle(angle: float):
 
 func update_ui_power(power: float):
   if power == 0:
-    shot_power_label.text = "-"
+    shot_power_value_label.text = "-"
   else:
-    shot_power_label.text = str("%.0f" % (power * 1000))
+    shot_power_value_label.text = str("%.0f" % (power * 1000))
+
+func on_reload_start() -> void:
+  shot_power_label.visible = false
+  reloading_label.visible = true
+
+func on_reload_complete() -> void:
+  reloading_label.visible = false
+  shot_power_label.visible = true
 
 func shoot(angle: float, power: float) -> void:
   if paused:

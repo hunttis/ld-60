@@ -39,7 +39,17 @@ offset_top = 3.0
 offset_right = 108.0
 offset_bottom = 28.0
 
+[node name="ReloadingLabel" type="Label" parent="CannonParametersPanel" unique_id=961084868]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 28.0
+offset_right = 98.0
+offset_bottom = 53.0
+theme_override_colors/font_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
+text = "( reloading )"
+
 [node name="PowerLabel" type="Label" parent="CannonParametersPanel" unique_id=1927396480]
+visible = false
 layout_mode = 0
 offset_left = 3.0
 offset_top = 28.0
@@ -47,13 +57,12 @@ offset_right = 98.0
 offset_bottom = 53.0
 text = "Shot power:"
 
-[node name="PowerValue" type="Label" parent="CannonParametersPanel" unique_id=1717940204]
+[node name="PowerValue" type="Label" parent="CannonParametersPanel/PowerLabel" unique_id=1717940204]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 100.0
-offset_top = 28.0
-offset_right = 130.0
-offset_bottom = 53.0
+offset_left = 97.0
+offset_right = 127.0
+offset_bottom = 25.0
 
 [node name="PointsLabel" type="Label" parent="CannonParametersPanel" unique_id=387087511]
 layout_mode = 0
