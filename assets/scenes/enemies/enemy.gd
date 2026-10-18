@@ -30,7 +30,7 @@ func _ready():
 static func create(_stats: EnemyStats, _speed: float) -> Enemy:
   var enemy: Enemy = load("res://assets/scenes/enemies/enemy.tscn").instantiate()
   enemy.stats = _stats
-  enemy.speed = _speed
+  enemy.speed = _speed * 20
   return enemy
 
 func _fit_shapes_to_sprite() -> void:
