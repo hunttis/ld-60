@@ -5,14 +5,7 @@ var controller: EnemyController
 
 func spawn(stats: EnemyStats) -> Enemy:
   var variance := controller.speed_variance
-  var enemy := Enemy.create(stats.speed * randf_range(1.0 - variance, 1.0 + variance), stats.max_health)
-  enemy.sprite_frames = stats.sprite_frames
-  enemy.point_value = stats.point_value
-  enemy.add_child(EnemyMoveLeftComponent.new())
-  if stats.has_gravity:
-    enemy.add_child(GravityComponent.new())
-  if stats.jump_strength > 0:
-    enemy.add_child(EnemyJumpComponent.new(stats.jump_strength))
+  var enemy := Enemy.create(stats, stats.speed * randf_range(1.0 - variance, 1.0 + variance))
   enemy.global_position = _add_variance(_get_spawn_origin(stats), stats.spawn_x_variance, stats.spawn_y_variance)
   return enemy
 

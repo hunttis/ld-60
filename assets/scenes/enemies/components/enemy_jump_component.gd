@@ -14,7 +14,7 @@ func _connect_signals() -> void:
 func _ready():
   raycast = RayCast2D.new()
   enemy.add_child.call_deferred(raycast)
-  var sprite_size = enemy.sprite_frames.get_frame_texture("default",0).get_size()
+  var sprite_size = enemy.stats.sprite_frames.get_frame_texture("default",0).get_size()
   raycast.position.y = -2 + sprite_size.y / 2
   raycast.target_position = Vector2(-1 - sprite_size.x/2,0)
   raycast.collision_mask = 4

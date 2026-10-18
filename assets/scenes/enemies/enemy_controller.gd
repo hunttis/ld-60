@@ -1,7 +1,5 @@
 class_name EnemyController extends Node
 
-signal enemy_died(enemy: Enemy)
-
 @export_group("Setup")
 @export var walker_spawn: Node2D
 @export var flyer_spawn: Node2D
@@ -21,22 +19,19 @@ func _ready() -> void:
   spawner.controller = self
 
 func spawn_basic_enemy() -> void:
-  spawn(Global.ENEMY_TYPE.BASIC)
+  spawn(get_stats(Global.ENEMY_TYPE.BASIC))
 
 func spawn_dark_flying_enemy() -> void:
-  spawn(Global.ENEMY_TYPE.FLYER_DARK)
+  spawn(get_stats(Global.ENEMY_TYPE.FLYER_DARK))
 
 func spawn_light_flying_enemy() -> void:
-  spawn(Global.ENEMY_TYPE.FLYER_LIGHT)
+  spawn(get_stats(Global.ENEMY_TYPE.FLYER_LIGHT))
 
 func spawn_big_enemy() -> void:
-  spawn(Global.ENEMY_TYPE.BIG)
+  spawn(get_stats(Global.ENEMY_TYPE.BIG))
 
-func spawn_stats(stats: EnemyStats) -> void:
+func spawn(stats: EnemyStats) -> void:
   _add_enemy(spawner.spawn(stats))
-
-func spawn(enemy_type: Global.ENEMY_TYPE) -> void:
-  _add_enemy(spawner.spawn(get_stats(enemy_type)))
 
 func get_stats(enemy_type: Global.ENEMY_TYPE) -> EnemyStats:
   match enemy_type:
@@ -56,8 +51,7 @@ func _add_enemy(enemy: Enemy) -> void:
   enemy.on_death.connect(_on_enemy_death.bind(enemy))
 
 func _on_enemy_death(enemy: Enemy) -> void:
-  enemy_died.emit(enemy)
-  Events.enemy_died.emit(enemy.point_value, enemy.global_position)
+  Events.enemy_died.emit(enemy)
   enemy_count -= 1
   if enemy_count == 0:
     Events.wave_complete.emit()

@@ -17,3 +17,7 @@ enum SpawnPoint { WALKER, FLYER }
 @export var unlocks_at_wave: int = 1
 @export_range(0, 50, 1) var spawn_x_variance: float = 0.0
 @export_range(0, 50, 1) var spawn_y_variance: float = 0.0
+
+@export_group("On Death")
+@export_range(0, 50, 1) var death_fill_cells: int = 5
+@export var death_chunk_type: Debris.TerrainType = Debris.TerrainType.DIRT

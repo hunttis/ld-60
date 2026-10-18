@@ -12,3 +12,4 @@ point_value = 5
 sprite_frames = ExtResource("2_frames")
 jump_strength = 100.0
 unlocks_at_wave = 5
+death_fill_cells = 10

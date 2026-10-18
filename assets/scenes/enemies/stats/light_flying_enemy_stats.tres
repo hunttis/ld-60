@@ -14,3 +14,4 @@ has_gravity = false
 spawn_point = 1
 unlocks_at_wave = 4
 spawn_y_variance = 20.0
+death_fill_cells = 2

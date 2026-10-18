@@ -1,9 +1,11 @@
 [gd_scene format=4 uid="uid://caks8edhjdicg"]
 
+[ext_resource type="Script" uid="uid://c74ohrrpd2k5e" path="res://assets/scenes/terrain/terrain.gd" id="1_eprm6"]
 [ext_resource type="Texture2D" uid="uid://6b1jup8gw4xl" path="res://assets/images/ld-60-background.png" id="1_p3odt"]
 [ext_resource type="TileSet" uid="uid://sgt3gq883v5u" path="res://assets/tilesets/4px_tileset.tres" id="2_p3odt"]
 
 [node name="Tilemap" type="Node2D" unique_id=397394120]
+script = ExtResource("1_eprm6")
 
 [node name="BackgroundSky" type="TextureRect" parent="." unique_id=1993284459]
 offset_right = 640.0

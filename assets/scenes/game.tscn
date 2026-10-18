@@ -71,13 +71,15 @@ offset_bottom = 23.0
 [node name="Player" parent="." unique_id=71792886 instance=ExtResource("1_cb66b")]
 position = Vector2(10, 188)
 
-[node name="DebugControls" type="Node2D" parent="." unique_id=599521625 node_paths=PackedStringArray("enemy_controller")]
+[node name="DebugControls" type="Node2D" parent="." unique_id=599521625 node_paths=PackedStringArray("enemy_controller", "game_manager")]
 script = ExtResource("4_cb5na")
 enemy_controller = NodePath("../GameManager/EnemyController")
+game_manager = NodePath("../GameManager")
 metadata/_custom_type_script = "uid://c4j78f276ibob"
 
-[node name="GameManager" type="Node" parent="." unique_id=830809214]
+[node name="GameManager" type="Node" parent="." unique_id=830809214 node_paths=PackedStringArray("terrain")]
 script = ExtResource("6_5aext")
+terrain = NodePath("../Terrain")
 
 [node name="EnemyController" parent="GameManager" unique_id=709279803 node_paths=PackedStringArray("walker_spawn", "flyer_spawn") instance=ExtResource("2_cb5na")]
 walker_spawn = NodePath("WalkerSpawn")

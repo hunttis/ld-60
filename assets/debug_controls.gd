@@ -1,6 +1,7 @@
 class_name DebugControls extends Node2D
 
 @export var enemy_controller: EnemyController
+@export var game_manager: GameManager
 
 func _check_under_cursor():
   global_position = get_global_mouse_position()
@@ -30,4 +31,9 @@ func _process(_delta):
     enemy_controller.spawn_big_enemy()
   
   if Input.is_action_just_pressed("debug_floating_text"):
-    Events.enemy_died.emit(randi_range(1,5), get_global_mouse_position())
+    var floater = FloatingTextComponent.create()
+    add_child(floater)
+    floater.play(str("+", randi_range(1,5)), get_global_mouse_position())
+    
+  if Input.is_action_just_pressed("debug_spawn_debris"):
+    game_manager.spawn_debris(get_global_mouse_position(), randi_range(1,5), Debris.TerrainType.DIRT)

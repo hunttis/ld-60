@@ -8,31 +8,45 @@ signal before_move(delta: float)
 @onready var hurtbox = $EnemyHurtbox/Hurtbox
 @onready var collision = $Collision
 
-@export var speed: float = 400.0
-@export var max_health: float
-@export var sprite_frames: SpriteFrames
-@export var point_value: int = 1
+@export var stats: EnemyStats
 
+var speed: float
+var point_value: int
 var health: float
 var current_speed: float
 var stop: bool = false
 
 func _ready():
-  health = max_health
-  sprite.sprite_frames = sprite_frames
+  health = stats.max_health
+  point_value = stats.point_value
+  if speed == 0:
+    speed = stats.speed
+  sprite.sprite_frames = stats.sprite_frames
   sprite.play("default")
+  _fit_shapes_to_sprite()
+  _add_components()
+
+static func create(_stats: EnemyStats, _speed: float) -> Enemy:
+  var enemy: Enemy = load("res://assets/scenes/enemies/enemy.tscn").instantiate()
+  enemy.stats = _stats
+  enemy.speed = _speed
+  return enemy
+
+func _fit_shapes_to_sprite() -> void:
+  var size: Vector2 = stats.sprite_frames.get_frame_texture("default", 0).get_size()
   var collider_shape = RectangleShape2D.new()
   var hurtbox_shape = RectangleShape2D.new()
-  hurtbox_shape.size = sprite_frames.get_frame_texture("default",0).get_size()
-  collider_shape.size = sprite_frames.get_frame_texture("default",0).get_size()
-  hurtbox.shape = hurtbox_shape
+  collider_shape.size = size
+  hurtbox_shape.size = size
   collision.shape = collider_shape
+  hurtbox.shape = hurtbox_shape
 
-static func create(_speed: float, _max_health: float) -> Enemy:
-  var enemy: Enemy = load("res://assets/scenes/enemies/enemy.tscn").instantiate()
-  enemy.speed = _speed
-  enemy.max_health = _max_health
-  return enemy
+func _add_components() -> void:
+  add_child(EnemyMoveLeftComponent.new())
+  if stats.has_gravity:
+    add_child(GravityComponent.new())
+  if stats.jump_strength > 0:
+    add_child(EnemyJumpComponent.new(stats.jump_strength))
 
 func take_damage(damage: float) -> void:
   health -= damage

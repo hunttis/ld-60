@@ -32,7 +32,7 @@ func _spawn() -> void:
     return
   
   print("Spawning ", picked.name,". Wave ", wave)
-  enemy_controller.spawn_stats(picked)
+  enemy_controller.spawn(picked)
   spawn_cooldown.start(randf_range(0.5,1.5))
 
 func _pick_enemy() -> Variant:
