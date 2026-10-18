@@ -14,18 +14,25 @@ signal shoot(angle: float, power: int)
 
 var angle: float = 45
 var shot_power: int = 5
+var paused: bool = false
 
 func _init() -> void:
   rotation_degrees = 0 - angle
 
 func _ready() -> void:
   Events.set_start_values.connect(emit_start_values)
+  Events.toggle_pause_mode.connect(toggle_pause)
+
+func toggle_pause(paused: bool):
+  self.paused = paused
 
 func emit_start_values() -> void:
   angle_changed.emit(angle)
   power_changed.emit(shot_power)
 
 func _process(delta: float) -> void:
+  if paused:
+    return
   if Input.is_action_pressed("lower_cannon_angle") && angle > MIN_ANGLE:
     change_cannon_angle(Direction.DOWN, delta)
   if Input.is_action_pressed("raise_cannon_angle") && angle < MAX_ANGLE:

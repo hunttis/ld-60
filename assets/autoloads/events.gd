@@ -4,6 +4,8 @@ signal go_to_options
 signal go_to_menu
 signal go_to_game
 signal go_to_game_over
+signal toggle_pause_mode(paused: bool)
+
 
 signal set_start_values
 

@@ -22,7 +22,7 @@ func _ready():
 func _get_spawn_cooldown() -> float:
   var wave_factor = maxf(1.0 - (wave - 3) * 0.07, 0.25)
   return randf_range(0.5, 1.5) * wave_factor
-  
+
 func _calculate_wave_points() -> void:
   points = round(BASE_POINTS + pow(BASE_POINTS, 1 + wave/10.0))
 
@@ -30,7 +30,7 @@ func _spawn() -> void:
   var picked = _pick_enemy()
   if !picked:
     return
-  
+
   print("Spawning ", picked.name,". Wave ", wave)
   enemy_controller.spawn(picked)
   spawn_cooldown.start(randf_range(0.5,1.5))
@@ -41,15 +41,15 @@ func _pick_enemy() -> Variant:
     var stats: EnemyStats = enemy_controller.get_stats(type as Global.ENEMY_TYPE)
     if stats.unlocks_at_wave <= wave && points >= stats.point_value:
       valid.push_back(stats)
-  
+
   if valid.size() == 0:
     return null
-  
+
   var selected: EnemyStats = valid.pick_random()
   if !selected:
     return null
-  
-  points -= selected.point_value  
+
+  points -= selected.point_value
   return selected
 
 func _start_wave():

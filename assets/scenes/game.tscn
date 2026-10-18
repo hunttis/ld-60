@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://qhc7ox1vvebt" path="res://assets/game_manager.gd" id="6_5aext"]
 [ext_resource type="Script" uid="uid://cq24dgkf6a010" path="res://assets/wave_manager.gd" id="8_wfsp4"]
 [ext_resource type="Script" uid="uid://daymgyppatff7" path="res://assets/fx_manager.gd" id="9_pw37s"]
+[ext_resource type="PackedScene" uid="uid://cw7aouy1djmav" path="res://assets/scenes/menus/pause.tscn" id="10_k2t1h"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
@@ -99,3 +100,6 @@ enemy_controller = NodePath("../EnemyController")
 
 [node name="FxManager" type="Node2D" parent="." unique_id=2137322989]
 script = ExtResource("9_pw37s")
+
+[node name="PauseMenu" parent="." unique_id=1029933016 instance=ExtResource("10_k2t1h")]
+visible = false

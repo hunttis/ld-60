@@ -51,7 +51,7 @@ func _add_components() -> void:
 func take_damage(damage: float) -> void:
   health -= damage
   on_damage_taken.emit(damage)
-  
+
   if health <= 0:
     die()
 
