@@ -3,6 +3,7 @@ extends Node2D
 var game_scene_file = preload("res://assets/scenes/game.tscn")
 var options_scene_file = preload("res://assets/scenes/menus/options.tscn")
 var main_menu_scene_file = preload("res://assets/scenes/menus/main_menu.tscn")
+var game_over_scene_file = preload("res://assets/scenes/game_over.tscn")
 
 enum Scenes {
   Main_Menu,
@@ -17,6 +18,7 @@ func _ready():
   Events.go_to_game.connect(_on_go_to_game)
   Events.go_to_menu.connect(_on_go_to_menu)
   Events.go_to_options.connect(_on_go_to_options)
+  Events.go_to_game_over.connect(_on_go_to_game_over)
 
   match default_scene:
     Scenes.Main_Menu:
@@ -45,3 +47,8 @@ func _on_go_to_options():
   _empty_current_scene()
   var options_scene = options_scene_file.instantiate()
   current_scene.add_child(options_scene)
+
+func _on_go_to_game_over():
+  _empty_current_scene()
+  var game_over_scene = game_over_scene_file.instantiate()
+  current_scene.add_child(game_over_scene)

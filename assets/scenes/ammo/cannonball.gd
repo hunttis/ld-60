@@ -5,6 +5,9 @@ var health = 15
 @export var destruction_radius: float = 6
 
 func _physics_process(_delta: float) -> void:
+  # game over, scene destruction might free tilemap before the cannonball
+  if tilemap_layer == null: return
+
   var center = tilemap_layer.to_local(global_position)
   var center_coords = tilemap_layer.local_to_map(center)
   var tile_size = Vector2i(4, 4)

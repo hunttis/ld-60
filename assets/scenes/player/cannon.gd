@@ -18,6 +18,9 @@ var shot_power: int = 5
 func _init() -> void:
   rotation_degrees = 0 - angle
 
+func _ready() -> void:
+  Events.set_start_values.connect(emit_start_values)
+
 func emit_start_values() -> void:
   angle_changed.emit(angle)
   power_changed.emit(shot_power)

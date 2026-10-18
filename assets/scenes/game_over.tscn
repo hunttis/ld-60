@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bslm1gxswjqa0"]
+
+[ext_resource type="Script" uid="uid://cnjoipbdl2em1" path="res://assets/scenes/game_over.gd" id="1_3vif2"]
+[ext_resource type="PackedScene" uid="uid://caks8edhjdicg" path="res://assets/scenes/terrain/tilemap.tscn" id="3_dlx6s"]
+
+[node name="GameOver" type="Node2D" unique_id=686144590]
+script = ExtResource("1_3vif2")
+
+[node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("3_dlx6s")]
+
+[node name="BackToMenuLabel" type="Label" parent="." unique_id=1245562851]
+offset_top = 220.0
+offset_right = 640.0
+offset_bottom = 270.0
+size_flags_horizontal = 4
+text = "Press space to start over"
+horizontal_alignment = 1
+vertical_alignment = 1

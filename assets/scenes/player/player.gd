@@ -14,4 +14,5 @@ func take_damage(enemy: Enemy):
   # replace with separate property for enemies ("damage") later
   health -= enemy.max_health
   if (health <= 0):
+    Events.player_died.emit()
     queue_free()
