@@ -7,7 +7,7 @@ extends Node2D
 func _on_turret_hurt_box_body_entered(enemy: Enemy) -> void:
   # we should only get enemies here (because of collision masks)
   take_damage(enemy)
-  enemy.queue_free()
+  enemy.attack_player()
 
 func take_damage(enemy: Enemy):
   health -= enemy.stats.damage

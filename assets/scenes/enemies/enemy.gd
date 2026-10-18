@@ -2,6 +2,7 @@ class_name Enemy extends CharacterBody2D
 
 signal on_damage_taken(damage: float)
 signal on_death()
+signal on_attack()
 signal before_move(delta: float)
 
 @onready var sprite = $Sprite
@@ -57,6 +58,10 @@ func take_damage(damage: float) -> void:
 
 func die() -> void:
   on_death.emit()
+  queue_free()
+
+func attack_player() -> void:
+  on_attack.emit()
   queue_free()
 
 func _physics_process(delta):

@@ -49,9 +49,16 @@ func _add_enemy(enemy: Enemy) -> void:
   add_child(enemy)
   enemy_count += 1
   enemy.on_death.connect(_on_enemy_death.bind(enemy))
+  enemy.on_attack.connect(_on_enemy_attack)
 
 func _on_enemy_death(enemy: Enemy) -> void:
   Events.enemy_died.emit(enemy)
+  _update_enemy_count()
+
+func _on_enemy_attack() -> void:
+  _update_enemy_count()
+
+func _update_enemy_count() -> void:
   enemy_count -= 1
   if enemy_count == 0:
     Events.wave_complete.emit()
