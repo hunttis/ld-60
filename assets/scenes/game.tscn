@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c4j78f276ibob" path="res://assets/debug_controls.gd" id="4_cb5na"]
 [ext_resource type="Script" uid="uid://qhc7ox1vvebt" path="res://assets/game_manager.gd" id="6_5aext"]
 [ext_resource type="Script" uid="uid://cq24dgkf6a010" path="res://assets/wave_manager.gd" id="8_wfsp4"]
+[ext_resource type="Script" uid="uid://daymgyppatff7" path="res://assets/fx_manager.gd" id="9_pw37s"]
 
 [node name="Game" type="Node2D" unique_id=686144590]
 script = ExtResource("1_dis88")
@@ -93,3 +94,6 @@ position = Vector2(650, 64)
 script = ExtResource("8_wfsp4")
 game_manager = NodePath("..")
 enemy_controller = NodePath("../EnemyController")
+
+[node name="FxManager" type="Node2D" parent="." unique_id=2137322989]
+script = ExtResource("9_pw37s")

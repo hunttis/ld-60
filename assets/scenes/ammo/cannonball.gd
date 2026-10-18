@@ -29,6 +29,7 @@ func _physics_process(_delta: float) -> void:
           tilemap_layer.erase_cell(coords)
         health -= tile_hitpoints
         linear_velocity *= .75
+        Events.create_particle_fx.emit(global_position, Global.PARTICLE_FX_TYPE.DIRT)
 
   if health < 0:
     queue_free()

@@ -6,3 +6,9 @@ enum ENEMY_TYPE {
   FLYER_DARK,
   BIG
 }
+
+enum PARTICLE_FX_TYPE {
+  DIRT,
+  FIRE,
+  BLOOD
+}
