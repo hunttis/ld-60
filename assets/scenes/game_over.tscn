@@ -8,10 +8,20 @@ script = ExtResource("1_3vif2")
 
 [node name="Terrain" parent="." unique_id=397394120 instance=ExtResource("3_dlx6s")]
 
-[node name="BackToMenuLabel" type="Label" parent="." unique_id=1245562851]
-offset_top = 220.0
+[node name="GameOverLabel" type="Label" parent="." unique_id=819760057]
+offset_top = 84.0
 offset_right = 640.0
-offset_bottom = 270.0
+offset_bottom = 184.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 65
+text = "GAME OVER"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BackToMenuLabel" type="Label" parent="." unique_id=1245562851]
+offset_top = 235.0
+offset_right = 640.0
+offset_bottom = 285.0
 size_flags_horizontal = 4
 text = "Press ESC to start over"
 horizontal_alignment = 1
