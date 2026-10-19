@@ -20,30 +20,30 @@ projectile_scene = ExtResource("2_5aext")
 [node name="CannonParametersPanel" type="Panel" parent="." unique_id=1670237246]
 offset_left = 5.0
 offset_top = 5.0
-offset_right = 140.0
+offset_right = 150.0
 offset_bottom = 65.0
 
 [node name="AngleLabel" type="Label" parent="CannonParametersPanel" unique_id=1034256158]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 10.0
 offset_top = 3.0
-offset_right = 58.0
+offset_right = 65.0
 offset_bottom = 28.0
 text = "Angle:"
 
 [node name="AngleValue" type="Label" parent="CannonParametersPanel" unique_id=2071767456]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 58.0
+offset_left = 68.0
 offset_top = 3.0
-offset_right = 108.0
+offset_right = 118.0
 offset_bottom = 28.0
 
 [node name="ReloadingLabel" type="Label" parent="CannonParametersPanel" unique_id=961084868]
 layout_mode = 0
-offset_left = 3.0
+offset_left = 10.0
 offset_top = 28.0
-offset_right = 98.0
+offset_right = 105.0
 offset_bottom = 53.0
 theme_override_colors/font_color = Color(0.8666667, 0.8666667, 0.8666667, 1)
 text = "( reloading )"
@@ -51,9 +51,9 @@ text = "( reloading )"
 [node name="PowerLabel" type="Label" parent="CannonParametersPanel" unique_id=1927396480]
 visible = false
 layout_mode = 0
-offset_left = 3.0
+offset_left = 10.0
 offset_top = 28.0
-offset_right = 98.0
+offset_right = 105.0
 offset_bottom = 53.0
 text = "Shot power:"
 
@@ -99,28 +99,42 @@ script = ExtResource("9_pw37s")
 [node name="PauseMenu" parent="." unique_id=1029933016 instance=ExtResource("10_k2t1h")]
 visible = false
 
-[node name="HealthContainer" type="HBoxContainer" parent="." unique_id=1197349271]
-offset_left = 270.0
-offset_right = 370.0
+[node name="HealthPanel" type="Panel" parent="." unique_id=1285547876]
+offset_left = 260.0
+offset_top = 5.0
+offset_right = 380.0
+offset_bottom = 45.0
+
+[node name="HealthContainer" type="HBoxContainer" parent="HealthPanel" unique_id=1197349271]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 110.0
 offset_bottom = 40.0
 
-[node name="HealthLabel" type="Label" parent="HealthContainer" unique_id=1649844261]
+[node name="HealthLabel" type="Label" parent="HealthPanel/HealthContainer" unique_id=1649844261]
 layout_mode = 2
 text = "Health:"
 
-[node name="HealthValue" type="Label" parent="HealthContainer" unique_id=1454596085]
+[node name="HealthValue" type="Label" parent="HealthPanel/HealthContainer" unique_id=1454596085]
 layout_mode = 2
 text = "—"
 
-[node name="PointsContainer" type="HBoxContainer" parent="." unique_id=119879873]
-offset_left = 540.0
-offset_right = 640.0
+[node name="PointsPanel" type="Panel" parent="." unique_id=976695155]
+offset_left = 530.0
+offset_top = 5.0
+offset_right = 635.0
+offset_bottom = 45.0
+
+[node name="PointsContainer" type="HBoxContainer" parent="PointsPanel" unique_id=119879873]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 110.0
 offset_bottom = 40.0
 
-[node name="PointsLabel" type="Label" parent="PointsContainer" unique_id=387087511]
+[node name="PointsLabel" type="Label" parent="PointsPanel/PointsContainer" unique_id=387087511]
 layout_mode = 2
 text = "Points:"
 
-[node name="PointsValue" type="Label" parent="PointsContainer" unique_id=1234307120]
+[node name="PointsValue" type="Label" parent="PointsPanel/PointsContainer" unique_id=1234307120]
 layout_mode = 2
 text = "—"

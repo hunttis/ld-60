@@ -10,8 +10,8 @@ class_name GameManager extends Node
 
 var points: int = 0
 var wave: int = 1
-@onready var points_value = $"../PointsContainer/PointsValue"
-@onready var health_value = $"../HealthContainer/HealthValue"
+@onready var points_value = $"../PointsPanel/PointsContainer/PointsValue"
+@onready var health_value = $"../HealthPanel/HealthContainer/HealthValue"
 @onready var player = $"../Player"
 
 func _ready():
