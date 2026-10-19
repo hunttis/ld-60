@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var start_health: float = 1000
+@export var start_health: int = 1000
 
 @onready var health: float = start_health
 
