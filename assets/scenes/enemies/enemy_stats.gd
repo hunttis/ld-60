@@ -7,7 +7,7 @@ enum SpawnPoint { WALKER, FLYER }
 @export var max_health: float = 10.0
 @export var point_value: int = 1
 @export var sprite_frames: SpriteFrames
-@export var damage: float = 10.0
+@export var damage: int = 100
 
 @export_group("Movement")
 @export var has_gravity: bool = true

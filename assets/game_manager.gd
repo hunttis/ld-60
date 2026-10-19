@@ -29,7 +29,7 @@ func _add_points(value: int) -> void:
   points += value
   points_value.text = str(points)
 
-func _on_player_damaged(remaining_health: float) -> void:
+func _on_player_damaged(remaining_health: int) -> void:
   _add_points(-2)
   health_value.text = str(remaining_health)
 
